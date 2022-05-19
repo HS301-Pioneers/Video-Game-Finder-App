@@ -1,11 +1,26 @@
 import React from "react";
-
+import FavoriteGames from "./FavoriteGames";
 
 class Main extends React.Component{ 
     render() {
          return(
-         <h1>Main Coming Soon...</h1>
+           <>
+           
+            <form className='form' onSubmit={this.getLocation}>
+
+            Your Search: {" "}
+            <input type="text" name="yourgame" onChange={this.handleChange} />
+            <button type='submit'>Search</button>
+          </form>
+
+          <FavoriteGames />
+
+         
+          </>
+        
          )
+        
+         
         }
     
     }
