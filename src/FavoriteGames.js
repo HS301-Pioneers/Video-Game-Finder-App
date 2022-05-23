@@ -11,17 +11,18 @@ class FavoriteGames extends React.Component {
     }
 
 
-componentDidMount = async () => {
-    console.log('function fired off');
-    try {
-      const url = `http://localhost:3001/games`;
-      const gamesResponse = await axios.get(url);
-      console.log(gamesResponse.data);
-      this.setState({ games: gamesResponse.data });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+// componentDidMount = async () => {
+//     console.log('function fired off');
+//     try {
+      //waiting for backend team to finish database before we can call this 
+      //const url = `https://game-finder-api.herokuapp.com/games?gameName={whatTheUserSearchedFor}`;
+  //     const gamesResponse = await axios.get(url);
+  //     console.log(gamesResponse.data);
+  //     this.setState({ games: gamesResponse.data });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
 
   deleteGame = async (gameToBeDeleted) => {
