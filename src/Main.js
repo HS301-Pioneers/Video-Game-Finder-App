@@ -48,8 +48,8 @@ this.setState({ gameData : response.data})
 {this.state.gameData.length && 
         <Container >
           <Carousel>
-            {this.state.gameData.map(game => (
-              <Carousel.Item key={game._id}>
+            {this.state.gameData.map((game, idx) => (
+              <Carousel.Item key={idx}>
                 <img
 src={game.backgroundImg}
                   alt={game.gameName}
@@ -59,6 +59,12 @@ src={game.backgroundImg}
                   <h3>{game.gameName}</h3>
                   <p>game stars:{game.gameStars}</p>
                   <p>Release Date: {game.release_date}</p>
+                  {game.gameStores.map((store, idx) => <p key={idx}>Game Stores: {store.store.name}</p>)}
+                 {game.gameTags.map((tag, idx) =>  <p key={idx}>Game Tags: {tag.name}</p>)}
+                  {game.genres.map((genre, idx) =>  <p key={idx}>Genres: {genre.name}</p>)}
+                  
+                  {/* <p>Platforms: {game.platforms}</p> */}
+                  {/* <p>Rating{game.rating}</p> */}
                   <Button onClick={() => this.deleteGame(game)}>Delete</Button>
                 </Carousel.Caption>
               </Carousel.Item>
