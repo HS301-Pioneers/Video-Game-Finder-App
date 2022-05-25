@@ -62,9 +62,10 @@ src={game.backgroundImg}
                   {game.gameStores.map((store, idx) => <p key={idx}>Game Stores: {store.store.name}</p>)}
                  {game.gameTags.map((tag, idx) =>  <p key={idx}>Game Tags: {tag.name}</p>)}
                   {game.genres.map((genre, idx) =>  <p key={idx}>Genres: {genre.name}</p>)}
-                  
-                  {/* <p>Platforms: {game.platforms}</p> */}
-                  {/* <p>Rating{game.rating}</p> */}
+                  {game.platforms.map((platform, idx) =>  <p key={idx}>Platforms: {platform.platform.name}</p> )}
+                  {/* {game.rating.map((rating, idx) =>  <p key={idx}>Rating{rating.name}</p> )} */}
+                 {game.rating &&
+                 <p>Rating: {game.rating.name}</p>}
                   <Button onClick={() => this.deleteGame(game)}>Delete</Button>
                 </Carousel.Caption>
               </Carousel.Item>
