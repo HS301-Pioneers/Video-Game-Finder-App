@@ -47,10 +47,10 @@ this.setState({ gameData : response.data})
         <FavoriteGames />
 {this.state.gameData.length && 
         <Container >
-          <Carousel>
+          <Carousel id="carousel">
             {this.state.gameData.map((game, idx) => (
               <Carousel.Item key={idx}>
-                <img
+                <img id="carousel-image"
 src={game.backgroundImg}
                   alt={game.gameName}
                 />
