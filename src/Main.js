@@ -10,7 +10,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       game: ' ',
-      gameData: []
+      gameData: [],
     }
   }
 
@@ -28,9 +28,11 @@ class Main extends React.Component {
     console.log(' made it inside onSubmit ');
     const url = `${process.env.REACT_APP_SERVER}/games?gameName=${this.state.game}`;
     console.log(url);
-const response = await axios.get(url)
-console.log(response.data);
-this.setState({ gameData : response.data})
+    const response = await axios.get(url)
+    console.log(response.data);
+    this.setState({
+      gameData: response.data,
+    })
   }
 
   render() {
@@ -45,34 +47,33 @@ this.setState({ gameData : response.data})
         </form>
 
         <FavoriteGames />
-{this.state.gameData.length && 
-        <Container >
-          <Carousel id="carousel">
-            {this.state.gameData.map((game, idx) => (
-              <Carousel.Item key={idx}>
-                <img id="carousel-image"
-src={game.backgroundImg}
-                  alt={game.gameName}
-                />
+        {this.state.gameData.length &&
+          <Container >
+            <Carousel id="carousel">
+              {this.state.gameData.map((game, idx) => (
+                <Carousel.Item key={idx}>
+                  <img id="carousel-image"
+                    src={game.backgroundImg}
+                    alt={game.gameName}
+                  />
 
-                <Carousel.Caption id='carousel-text-box'>
-                  <h3>{game.gameName}</h3>
-                  <p>game stars:{game.gameStars}</p>
-                  <p>Release Date: {game.release_date}</p>
-                  {game.gameStores.map((store, idx) => <p key={idx}>Game Stores: {store.store.name}</p>)}
-                 {game.gameTags.map((tag, idx) =>  <p key={idx}>Game Tags: {tag.name}</p>)}
-                  {game.genres.map((genre, idx) =>  <p key={idx}>Genres: {genre.name}</p>)}
-                  {game.platforms.map((platform, idx) =>  <p key={idx}>Platforms: {platform.platform.name}</p> )}
-                  {/* {game.rating.map((rating, idx) =>  <p key={idx}>Rating{rating.name}</p> )} */}
-                 {game.rating &&
-                 <p>Rating: {game.rating.name}</p>}
-                  <Button onClick={() => this.deleteGame(game)}>Delete</Button>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Container>
-      }
+                  <Carousel.Caption id='carousel-text-box'>
+                    <h3>{game.gameName}</h3>
+                    <p>game stars:{game.gameStars}</p>
+                    <p>Release Date: {game.release_date}</p>
+                    <p key={idx}>Game Stores: {game.gameStores.map(store => store.store.name).join(", ")}</p>
+                    <p key={idx}>Game Tags: {game.gameTags.map(tag => tag.name).join(", ")}</p>
+                    <p key={idx}>Game Genres: {game.genres.map(genre => genre.name).join(", ")}</p>
+                    <p key={idx}>Game Platforms: {game.platforms.map(platform => platform.platform.name).join(", ")}</p>
+                    {game.rating &&
+                      <p>Rating: {game.rating.name}</p>}
+                    <Button onClick={() => this.deleteGame(game)}>Delete</Button>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Container>
+        }
       </>
 
     )
