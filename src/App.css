@@ -22,3 +22,56 @@
   margin : 10px;
   border-radius:25px
 }
+
+
+#home
+{
+  border: 2px solid white;
+  background: white;
+  border-radius: 10px;
+margin-left: 20px;
+}
+
+#about {
+  border: 2px solid white;
+  background: white;
+  border-radius: 10px;
+  
+  margin-left: 120px;
+}
+
+#wishlist {
+  border: 2px solid white;
+  background: white;
+  border-radius: 10px;
+margin-left: 120px;
+}
+
+#search {
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+#button {
+  margin-left: 10px;
+}
+
+#footer {
+  margin-top: 410px;
+  border: 2px solid black;
+  background: black;
+  color: white;
+  font-size: 10px;
+  height: 65px;
+}
+
+#theform {
+  margin-left: 20px;
+}
+
+
+h3 {
+  margin-left: 20px ;
+}
+

@@ -39,11 +39,11 @@ class Main extends React.Component {
     return (
       <>
 
-        <form className='form' onSubmit={(event) => this.onSubmit(event)}>
+        <form id='theform' className='form' onSubmit={(event) => this.onSubmit(event)}>
 
-          Your Search: {" "}
-          <input type="text" name="yourgame" onChange={this.onChange} />
-          <button type='submit'>Search</button>
+           Your Search: {" "}
+          <input id='search' type="text" name="yourgame" onChange={this.onChange} />
+          <button id='button' type='submit'>Search</button>
         </form>
 
         <FavoriteGames />
