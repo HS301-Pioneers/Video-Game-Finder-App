@@ -46,7 +46,7 @@ class Main extends React.Component {
           <button id='button' type='submit'>Search</button>
         </form>
 
-        <FavoriteGames />
+        {/* <FavoriteGames /> */}
         {this.state.gameData.length &&
           <Container >
             <Carousel id="carousel">

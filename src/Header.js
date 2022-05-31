@@ -10,7 +10,7 @@ class Header extends React.Component {
             <Navbar.Brand>Videogame Finder</Navbar.Brand>
             <NavItem id='home'><Link to='/' className="nav-link">Home</Link></NavItem>
             <NavItem id='about'><Link to='/About'className="nav-link">About</Link></NavItem>
-            <NavItem id='wishlist'><Link to='/FavoriteGames'className="nav-link">WishList</Link></NavItem>
+            <NavItem id='wishlist'><Link to='/Wishlist'className="nav-link">WishList</Link></NavItem>
             {/* PLACEHOLDER: render a navigation link to the about page */}
           </Navbar>
         ) 

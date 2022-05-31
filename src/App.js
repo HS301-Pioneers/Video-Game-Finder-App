@@ -7,6 +7,7 @@ import React from 'react';
 import Footer from './Footer';
 import Main from './Main';
 import About from './About';
+import FavoriteGames from './FavoriteGames';
 
 
 class App extends React.Component {
@@ -19,7 +20,8 @@ class App extends React.Component {
             element={<Main />} ></Route>
           <Route path='/About'
             element={<About />} ></Route>
-
+<Route path='/Wishlist'
+            element={<FavoriteGames />} ></Route>
         </Routes>
         <Footer />
       </Router>
