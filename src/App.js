@@ -22,6 +22,7 @@ class App extends React.Component {
             element={<About />} ></Route>
 <Route path='/Wishlist'
             element={<FavoriteGames />} ></Route>
+            
         </Routes>
         <Footer />
       </Router>

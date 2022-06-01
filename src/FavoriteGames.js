@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Card } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 
 class FavoriteGames extends React.Component {
   constructor(props) {
@@ -66,16 +66,25 @@ class FavoriteGames extends React.Component {
       <>
         <h3>favorite games coming soon..</h3>
         {this.state.games.length &&
-          this.state.games.map((game, idx) => (
-            <Card id="card">
-              <Card.Img key={idx}
-                src={game.backgroundImg}
-                alt={game.gameName}
-              />
+          <Container>
+            <Row xs={1} md={2} lg={3} xl={3}>
 
+              {this.state.games.map((game, idx) => (
 
-            </Card>
-          ))}
+                 <Col> 
+                  <Card id="card">
+                    {/* <Card.title>{game.gameName}</Card.title> */}
+                    {/* <Card.Text>{game.release_date}</Card.Text> */}
+                    <Card.Img key={idx}
+                      src={game.backgroundImg}
+                      alt={game.gameName}
+                    />
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        }
       </>
 
 

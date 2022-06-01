@@ -75,3 +75,13 @@ h3 {
   margin-left: 20px ;
 }
 
+#card {
+  margin: auto;
+  text-align: center;
+  
+}
+
+Row {
+  text-align: center;
+  margin: auto;
+}
