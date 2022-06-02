@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Card, Container, Row, Col } from "react-bootstrap";
-
+import Button from "react-bootstrap/Button";
 class FavoriteGames extends React.Component {
   constructor(props) {
     super(props);
@@ -53,7 +53,6 @@ class FavoriteGames extends React.Component {
     const config = {
       method: "post",
       baseURL: process.env.REACT_APP_SERVER,
-      //change name of env 
       url: "/games/",
       data: newGame
     };
@@ -65,6 +64,7 @@ class FavoriteGames extends React.Component {
     return (
       <>
         <h3>favorite games coming soon..</h3>
+       
         {this.state.games.length &&
           <Container>
             <Row xs={1} md={2} lg={3} xl={3}>
@@ -79,6 +79,7 @@ class FavoriteGames extends React.Component {
                       src={game.backgroundImg}
                       alt={game.gameName}
                     />
+                     <Button onClick={() => this.deleteGame(game)}>Delete</Button>
                   </Card>
                 </Col>
               ))}

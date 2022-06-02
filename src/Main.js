@@ -34,7 +34,20 @@ class Main extends React.Component {
       gameData: response.data,
     })
   }
-
+  createGame = async newGame => {
+    console.log(newGame);
+    const config = {
+      method: "post",
+      baseURL: process.env.REACT_APP_SERVER,
+      url: "/games/",
+      data: newGame
+    };
+    console.log(config);
+    const gameResults = await axios(config);
+    console.log(gameResults.data);
+    const updatedGames = [...this.state.games, gameResults.data];
+    this.setState({ games: updatedGames })
+  }
   render() {
     return (
       <>
@@ -67,7 +80,7 @@ class Main extends React.Component {
                     <p key={idx}>Game Platforms: {game.platforms.map(platform => platform.platform.name).join(", ")}</p>
                     {game.rating &&
                       <p>Rating: {game.rating.name}</p>}
-                    <Button onClick={() => this.deleteGame(game)}>Delete</Button>
+                    <Button onClick={(game) => this.createGame(game)}>Add to Wishlist</Button>
                   </Carousel.Caption>
                 </Carousel.Item>
               ))}
