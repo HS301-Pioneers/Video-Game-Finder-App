@@ -63,21 +63,21 @@ class FavoriteGames extends React.Component {
   render() {
     return (
       <>
-        <h3>favorite games coming soon..</h3>
         {this.state.games.length &&
-          <Container>
+          <Container id="cards">
             <Row xs={1} md={2} lg={3} xl={3} >
 
               {this.state.games.map((game, idx) => (
 
                 <Col>
-                  <Card key={Math.random() * 100} id="card">
-                    <Card.Title>{game.gameName}</Card.Title>
-                    <Card.Text>{game.release_date}</Card.Text>
+                  <Card key={Math.random() * 100} id="card" className="h-100">
+             
                     <Card.Img 
                       src={game.backgroundImg}
                       alt={game.gameName}
-                    />
+                    />       
+                    <Card.Title>{game.gameName}</Card.Title>
+                    <Card.Text>{game.release_date}</Card.Text>
                     <Button onClick={() => this.deleteGame(game)}>Delete</Button>
                   </Card>
                 </Col>
