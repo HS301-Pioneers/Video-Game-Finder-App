@@ -34,18 +34,18 @@ class Main extends React.Component {
       gameData: response.data,
     })
   }
-  createGame = async newGame => {
+  createGame = async (newGame, event) => {
     console.log(newGame);
     const config = {
       method: "post",
       baseURL: process.env.REACT_APP_SERVER,
-      url: "/games/",
+      url: "/wishlist/",
       data: newGame
     };
     console.log(config);
     const gameResults = await axios(config);
     console.log(gameResults.data);
-    const updatedGames = [...this.state.games, gameResults.data];
+    const updatedGames = [...this.state.gameData, gameResults.data];
     this.setState({ games: updatedGames })
   }
   render() {
@@ -54,7 +54,7 @@ class Main extends React.Component {
 
         <form id='theform' className='form' onSubmit={(event) => this.onSubmit(event)}>
 
-           Your Search: {" "}
+          Your Search: {" "}
           <input id='search' type="text" name="yourgame" onChange={this.onChange} />
           <button id='button' type='submit'>Search</button>
         </form>
@@ -74,13 +74,15 @@ class Main extends React.Component {
                     <h3>{game.gameName}</h3>
                     <p>game stars:{game.gameStars}</p>
                     <p>Release Date: {game.release_date}</p>
-                    <p key={idx}>Game Stores: {game.gameStores.map(store => store.store.name).join(", ")}</p>
-                    <p key={idx}>Game Tags: {game.gameTags.map(tag => tag.name).join(", ")}</p>
-                    <p key={idx}>Game Genres: {game.genres.map(genre => genre.name).join(", ")}</p>
-                    <p key={idx}>Game Platforms: {game.platforms.map(platform => platform.platform.name).join(", ")}</p>
+                    {game.gameStores !== null && 
+                    <p key={Math.random() * 100}>Game Stores: {game.gameStores.map(store => store.store.name).join(", ")}</p>}
+                    <p key={Math.random() * 100}>Game Tags: {game.gameTags.map(tag => tag.name).join(", ")}</p>
+                    <p key={Math.random() * 100}>Game Genres: {game.genres.map(genre => genre.name).join(", ")}</p>
+                    <p key={Math.random() * 100}>Game Platforms: {game.platforms.map(platform => platform.platform.name).join(", ")}</p>
                     {game.rating &&
                       <p>Rating: {game.rating.name}</p>}
-                    <Button onClick={(game) => this.createGame(game)}>Add to Wishlist</Button>
+                  {/* <Button onClick={(game) => this.createGame(game)}>Add to Wishlist</Button> */}
+                  <Button onClick={(event) => this.createGame(game, event)}>Add to Wishlist</Button>
                   </Carousel.Caption>
                 </Carousel.Item>
               ))}
