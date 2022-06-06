@@ -29,7 +29,7 @@ class FavoriteGames extends React.Component {
 
   deleteGame = async (gameToBeDeleted) => {
     try {
-      const proceed = window.confirm(`Do you want to delete ${gameToBeDeleted.title}?`);
+      const proceed = window.confirm(`Do you want to delete ${gameToBeDeleted.gameName}?`);
 
       if (proceed) {
         let newGames = this.state.games.filter(game => game._id !== gameToBeDeleted._id);
@@ -39,7 +39,7 @@ class FavoriteGames extends React.Component {
           baseURL: process.env.REACT_APP_SERVER,
 
 
-          url: `/games/${gameToBeDeleted._id}`
+          url: `/wishlist/${gameToBeDeleted._id}`
         };
         await axios(config);
       }
@@ -49,37 +49,36 @@ class FavoriteGames extends React.Component {
   }
   handleClose = () => this.setState({ showForm: false })
 
-  createGame = async newGame => {
-    const config = {
-      method: "post",
-      baseURL: process.env.REACT_APP_SERVER,
-      url: "/games/",
-      data: newGame
-    };
-    const gameResults = await axios(config);
-    const updatedGames = [...this.state.games, gameResults.data];
-    this.setState({ games: updatedGames })
-  }
+  // createGame = async newGame => {
+  //   const config = {
+  //     method: "post",
+  //     baseURL: process.env.REACT_APP_SERVER,
+  //     url: "/wishlist/",
+  //     data: newGame
+  //   };
+  //   const gameResults = await axios(config);
+  //   const updatedGames = [...this.state.games, gameResults.data];
+  //   this.setState({ games: updatedGames })
+  // }
   render() {
     return (
       <>
         <h3>favorite games coming soon..</h3>
-       
         {this.state.games.length &&
           <Container>
             <Row xs={1} md={2} lg={3} xl={3}>
 
               {this.state.games.map((game, idx) => (
 
-                 <Col> 
+                <Col>
                   <Card id="card">
                     {/* <Card.title>{game.gameName}</Card.title> */}
                     {/* <Card.Text>{game.release_date}</Card.Text> */}
-                    <Card.Img key={idx}
+                    <Card.Img key={Math.random() * 100}
                       src={game.backgroundImg}
                       alt={game.gameName}
                     />
-                     <Button onClick={() => this.deleteGame(game)}>Delete</Button>
+                    <Button onClick={() => this.deleteGame(game)}>Delete</Button>
                   </Card>
                 </Col>
               ))}
