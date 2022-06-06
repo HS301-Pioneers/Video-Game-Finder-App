@@ -1,6 +1,8 @@
 .App {
   text-align: center;
+  background-color: blue;
 }
+
 #carousel{
   max-height: 770px;
   margin: 3%;
@@ -10,33 +12,32 @@
   max-height: 770px;
   opacity: .65;
 }
+
 #carousel-text-box {
   color: black;
   background-color: darkgray;
   opacity: .80;
   padding: 5%;
   border: 2px solid black;
-    /* margin-bottom: 20%; */
 }
+
 #logo {
   margin : 10px;
   border-radius:25px
 }
 
 
-#home
-{
+#home {
   border: 2px solid white;
   background: white;
   border-radius: 10px;
-margin-left: 20px;
+  margin-left: 20px;
 }
 
 #about {
   border: 2px solid white;
   background: white;
   border-radius: 10px;
-  
   margin-left: 120px;
 }
 
@@ -44,17 +45,17 @@ margin-left: 20px;
   border: 2px solid white;
   background: white;
   border-radius: 10px;
-margin-left: 120px;
+  margin-left: 120px;
 }
 
-#search {
-  margin-top: 10px;
+#theform {
+  margin-top: 3%;
   font-size: 20px;
-  margin-left: 10px;
+  margin-left: 37%;
 }
 
 #button {
-  margin-left: 10px;
+  margin-left: 2%;
 }
 
 #footer {
@@ -66,10 +67,10 @@ margin-left: 120px;
   height: 65px;
 }
 
-#theform {
+/* #theform {
  text-align: center;
  font-size: 20px;
-}
+} */
 
 
 h3 {
@@ -77,9 +78,9 @@ h3 {
 }
 
 #card {
-  margin: auto;
+  border: 5px solid purple;
+  margin-bottom: 10%;
   text-align: center;
-  
 }
 
 Row {

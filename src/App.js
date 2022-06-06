@@ -1,18 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-
 import Header from './Header';
-
 import React from 'react';
 import Footer from './Footer';
 import Main from './Main';
 import About from './About';
 import FavoriteGames from './FavoriteGames';
 
-
 class App extends React.Component {
   render() {
     return (
+      <div>
       <Router>
         <Header />
         <Routes>
@@ -26,6 +24,7 @@ class App extends React.Component {
         </Routes>
         <Footer />
       </Router>
+            </div>
     );
   }
 }
