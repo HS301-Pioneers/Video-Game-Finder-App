@@ -61,7 +61,7 @@ class Main extends React.Component {
 
         {/* <FavoriteGames /> */}
         {this.state.gameData.length &&
-          <Container >
+          <Container id="App">
             <Carousel id="carousel">
               {this.state.gameData.map((game, idx) => (
                 <Carousel.Item key={idx}>

@@ -66,15 +66,15 @@ class FavoriteGames extends React.Component {
         <h3>favorite games coming soon..</h3>
         {this.state.games.length &&
           <Container>
-            <Row xs={1} md={2} lg={3} xl={3}>
+            <Row xs={1} md={2} lg={3} xl={3} >
 
               {this.state.games.map((game, idx) => (
 
                 <Col>
-                  <Card id="card">
-                    {/* <Card.title>{game.gameName}</Card.title> */}
-                    {/* <Card.Text>{game.release_date}</Card.Text> */}
-                    <Card.Img key={Math.random() * 100}
+                  <Card key={Math.random() * 100} id="card">
+                    <Card.Title>{game.gameName}</Card.Title>
+                    <Card.Text>{game.release_date}</Card.Text>
+                    <Card.Img 
                       src={game.backgroundImg}
                       alt={game.gameName}
                     />
