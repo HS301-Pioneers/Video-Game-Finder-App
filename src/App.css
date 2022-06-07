@@ -96,3 +96,6 @@ Row {
   margin-top: 50px;
 }
 
+.profilePic{
+  max-height: 100px;
+}

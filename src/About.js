@@ -1,20 +1,41 @@
-import { AccordionButton } from "react-bootstrap";
+import {Accordion,Image} from "react-bootstrap";
 import React,  { Component }  from "react";
+import Layton from "./srcImages/Layton.JPG"
 
 
 class About extends Component {
     render() {
         return (
-            <>
-        <p>This application gives the user the ability to search for and make a 
-            collection of video games they enjoy or like to enjoy.
-        </p>
-        <h2>Our Team: 
-            McCall: frontend
-            Layton: frontend
-            Marissa: frontend
-        </h2>
-        </>
+            <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="0">
+                <Accordion.Header>Layton Marshall</Accordion.Header>
+                <Accordion.Body>Junior, Tennis, Honor Society, Robotics
+                <Image className="profilePic" src={Layton}
+                />
+                </Accordion.Body>
+               
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+                <Accordion.Header>McCall Woodward</Accordion.Header>
+                <Accordion.Body>Junior, Tennis, Honor Society, Robotics</Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+                <Accordion.Header>Layton Marshall</Accordion.Header>
+                <Accordion.Body>Junior, Tennis, Honor Society, Robotics</Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+                <Accordion.Header>Layton Marshall</Accordion.Header>
+                <Accordion.Body>Junior, Tennis, Honor Society, Robotics</Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="4">
+                <Accordion.Header>Layton Marshall</Accordion.Header>
+                <Accordion.Body>Junior, Tennis, Honor Society, Robotics</Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="5">
+                <Accordion.Header>Layton Marshall</Accordion.Header>
+                <Accordion.Body>Junior, Tennis, Honor Society, Robotics</Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
          ) }
 };
 
