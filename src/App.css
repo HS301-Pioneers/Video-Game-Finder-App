@@ -98,6 +98,9 @@ Row {
 
 .profilePic{
   max-width: 250px;
+  
 
-
+}
+.aboutCard{
+  max-width: fit-content;
 }
