@@ -10,21 +10,20 @@ import FavoriteGames from './FavoriteGames';
 class App extends React.Component {
   render() {
     return (
-      <div>
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path='/'
-            element={<Main />} ></Route>
-          <Route path='/About'
-            element={<About />} ></Route>
-<Route path='/Wishlist'
-            element={<FavoriteGames />} ></Route>
-            
-        </Routes>
-        <Footer />
-      </Router>
-            </div>
+      <div id="App">
+        <Router>
+          <Header />
+          <Routes>
+            <Route exact path='/'
+              element={<Main />} ></Route>
+            <Route path='/About'
+              element={<About />} ></Route>
+            <Route path='/Wishlist'
+              element={<FavoriteGames />} ></Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
     );
   }
 }

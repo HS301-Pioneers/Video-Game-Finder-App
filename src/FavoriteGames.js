@@ -13,17 +13,13 @@ class FavoriteGames extends React.Component {
 
 
   componentDidMount = async () => {
-    console.log('function fired off');
     try {
       const url = `https://game-finder-api.herokuapp.com/wishlist`;
       const gamesResponse = await axios.get(url);
-      console.log(gamesResponse.data);
       this.setState({ games: gamesResponse.data });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-
-
   }
 
 
@@ -49,29 +45,15 @@ class FavoriteGames extends React.Component {
   }
   handleClose = () => this.setState({ showForm: false })
 
-  // createGame = async newGame => {
-  //   const config = {
-  //     method: "post",
-  //     baseURL: process.env.REACT_APP_SERVER,
-  //     url: "/wishlist/",
-  //     data: newGame
-  //   };
-  //   const gameResults = await axios(config);
-  //   const updatedGames = [...this.state.games, gameResults.data];
-  //   this.setState({ games: updatedGames })
-  // }
   render() {
     return (
       <>
-        {this.state.games.length &&
+        {this.state.games.length > 0 &&
           <Container id="cards">
             <Row xs={1} md={2} lg={3} xl={3} >
-
               {this.state.games.map((game, idx) => (
-
                 <Col>
                   <Card key={Math.random() * 100} id="card" className="h-100">
-             
                     <Card.Img 
                       src={game.backgroundImg}
                       alt={game.gameName}
