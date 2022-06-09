@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import FavoriteGames from "./FavoriteGames";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
@@ -9,59 +8,49 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      game: ' ',
+      game: '',
       gameData: [],
     }
   }
 
-
-
-
   onChange = (input) => {
     let getGames = input.target.value;
     this.setState({ game: getGames });
-    console.log(getGames);
   };
 
   onSubmit = async (event) => {
     event.preventDefault();
-    console.log(' made it inside onSubmit ');
     const url = `${process.env.REACT_APP_SERVER}/games?gameName=${this.state.game}`;
-    console.log(url);
     const response = await axios.get(url)
-    console.log(response.data);
     this.setState({
-      gameData: response.data,
+      gameData: response.data.slice(0, 5),
     })
   }
-  createGame = async (newGame, event) => {
-    console.log(newGame);
+
+  createGame = async (newGame) => {
     const config = {
       method: "post",
       baseURL: process.env.REACT_APP_SERVER,
       url: "/wishlist/",
       data: newGame
     };
-    console.log(config);
     const gameResults = await axios(config);
-    console.log(gameResults.data);
     const updatedGames = [...this.state.gameData, gameResults.data];
     this.setState({ games: updatedGames })
   }
   render() {
     return (
       <>
-
+        <Container>
         <form id='theform' className='form' onSubmit={(event) => this.onSubmit(event)}>
-
-          Your Search: {" "}
+          Enter a Game: {" "}
           <input id='search' type="text" name="yourgame" onChange={this.onChange} />
-          <button id='button' type='submit'>Search</button>
+          <Button id='button' type='submit' size="lg">Search</Button>
         </form>
+        </Container>
 
-        {/* <FavoriteGames /> */}
-        {this.state.gameData.length &&
-          <Container id="App">
+        {this.state.gameData.length > 0 &&
+          <Container>
             <Carousel id="carousel">
               {this.state.gameData.map((game, idx) => (
                 <Carousel.Item key={idx}>
@@ -69,7 +58,6 @@ class Main extends React.Component {
                     src={game.backgroundImg}
                     alt={game.gameName}
                   />
-
                   <Carousel.Caption id='carousel-text-box'>
                     <h3>{game.gameName}</h3>
                     <p>game stars:{game.gameStars}</p>
@@ -81,8 +69,7 @@ class Main extends React.Component {
                     <p key={Math.random() * 100}>Game Platforms: {game.platforms.map(platform => platform.platform.name).join(", ")}</p>
                     {game.rating &&
                       <p>Rating: {game.rating.name}</p>}
-                  {/* <Button onClick={(game) => this.createGame(game)}>Add to Wishlist</Button> */}
-                  <Button onClick={(event) => this.createGame(game, event)}>Add to Wishlist</Button>
+                  <Button onClick={() => this.createGame(game)}>Add to Wishlist</Button>
                   </Carousel.Caption>
                 </Carousel.Item>
               ))}
@@ -90,12 +77,8 @@ class Main extends React.Component {
           </Container>
         }
       </>
-
     )
-
-
   }
-
 }
 
 
